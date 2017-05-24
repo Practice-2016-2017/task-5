@@ -1,4 +1,4 @@
-package com.exigen.timetable.controller;
+package com.exigen.timetable.controller.student;
 
 import com.exigen.timetable.repository.StudentClassRepository;
 import org.springframework.beans.factory.annotation.Autowired;
