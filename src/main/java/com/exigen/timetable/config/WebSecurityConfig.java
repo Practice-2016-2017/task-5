@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 /**
  * Created by artem on 21.03.17.
@@ -27,13 +28,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
+            .authorizeRequests()
+                .antMatchers("/student/**").access("hasRole('ROLE_STUDENT')")
+                .antMatchers("/teacher/**").access("hasRole('ROLE_TEACHER')")
+                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/registration").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .httpBasic()
+            .formLogin()
+                .permitAll()
+                .successHandler(successHandler())
                 .and()
-                .csrf()
+            .logout()
+                .permitAll()
+                .and()
+            .httpBasic()
+                .and()
+            .csrf()
                 .disable();
     }
 
@@ -46,5 +57,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder(11);
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler successHandler() {
+        return new AuthenticationSuccessHandlerImpl();
     }
 }
