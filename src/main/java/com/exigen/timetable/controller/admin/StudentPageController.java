@@ -81,7 +81,8 @@ public class StudentPageController {
     @RequestMapping(value = "/{studentId}/edit", method = RequestMethod.GET)
     public ModelAndView editStudentView(@PathVariable Long studentId) {
         ModelMap model = new ModelMap();
-        model.addAttribute("student", userRepository.findOne(studentId));
+        model.addAttribute("user", userRepository.findOne(studentId));
+        model.addAttribute("studentGroupList", studentGroupRepository.findAll());
         return new ModelAndView("admin_edit_student", model);
     }
 
@@ -89,13 +90,15 @@ public class StudentPageController {
     public String editStudent(@PathVariable Long studentId,
                               @RequestParam("firstName") String firstName,
                               @RequestParam("lastName") String lastName,
-                              @RequestParam("username") String username) {
+                              @RequestParam("username") String username,
+                              @RequestParam("studentGroup") StudentGroup studentGroup) {
         User student = userRepository.findOne(studentId);
         if (student.getUsername().equals(username) ||
                 userRepository.findByUsername(username) == null) {
             student.setUsername(username);
             student.setFirstName(firstName);
             student.setLastName(lastName);
+            student.setStudentGroup(studentGroup);
             userRepository.save(student);
             return "redirect:/admin/studentPage";
         }

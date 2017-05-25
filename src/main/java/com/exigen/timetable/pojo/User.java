@@ -29,6 +29,9 @@ public class User {
     )
     private Collection<Role> roles;
 
+    @ManyToOne
+    private StudentGroup studentGroup;
+
     public User() {
 
     }
@@ -103,5 +106,13 @@ public class User {
 
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
+    }
+
+    public StudentGroup getStudentGroup() {
+        return studentGroup;
+    }
+
+    public void setStudentGroup(StudentGroup studentGroup) {
+        this.studentGroup = studentGroup;
     }
 }
