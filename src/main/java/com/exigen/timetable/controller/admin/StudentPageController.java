@@ -15,10 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
 
 @Controller
 @RequestMapping("/admin/studentPage")
@@ -39,31 +36,25 @@ public class StudentPageController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView studentsList() {
         ModelMap model = new ModelMap();
-
-        List<User> students = new LinkedList<>();
-        List<String> studentsGroup = new LinkedList<>();
-        for (StudentGroup studentGroup : studentGroupRepository.findAll()) {
-            students.addAll(studentGroup.getStudents());
-            String[] currentStudentGroup = new String[studentGroup.getStudents().size()];
-            Arrays.fill(currentStudentGroup, studentGroup.getName());
-            studentsGroup.addAll(Arrays.asList(currentStudentGroup));
-        }
-
-        model.addAttribute("students", students);
-        model.addAttribute("studentsGroup", studentsGroup);
+        model.addAttribute("students",
+                userRepository.findByRoles_name("ROLE_STUDENT"));
         return new ModelAndView("admin_student_list", model);
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public ModelAndView addStudentView() {
-        return new ModelAndView("admin_add_student");
+        ModelMap model = new ModelMap();
+        model.addAttribute("user", new User());
+        model.addAttribute("studentGroupList", studentGroupRepository.findAll());
+        return new ModelAndView("admin_add_student", model);
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addStudent(@RequestParam("firstName") String firstName,
                              @RequestParam("lastName") String lastName,
                              @RequestParam("username") String username,
-                             @RequestParam("password") String password) {
+                             @RequestParam("password") String password,
+                             @RequestParam("studentGroup") StudentGroup studentGroup) {
         if (userRepository.findByUsername(username) == null) {
             User student = new User();
             student.setUsername(username);
@@ -71,6 +62,7 @@ public class StudentPageController {
             student.setLastName(lastName);
             student.setEnabled(true);
             student.setPassword(passwordEncoder.encode(password));
+            student.setStudentGroup(studentGroup);
             student.setRoles(Collections.singletonList(roleRepository.findByName("ROLE_STUDENT")));
             userRepository.save(student);
             return "redirect:/admin/studentPage";

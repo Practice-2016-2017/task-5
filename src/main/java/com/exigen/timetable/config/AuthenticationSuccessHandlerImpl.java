@@ -1,7 +1,5 @@
 package com.exigen.timetable.config;
 
-import com.google.common.annotations.Beta;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html lang="en">
 <head>
 
@@ -17,12 +18,13 @@
 
 </head>
 <body>
-    <form action="<spring:url value="/admin/studentPage/add" />" method="POST">
+    <form:form action="/admin/studentPage/add" commandName="user" method="POST">
         <input type="text" name="firstName" placeholder="First name" required />
-        <input type="text" name="lastName" placeholder="Last name" required />
-        <input type="text" name="username" placeholder="Username" required/>
+        <input type="text" name="lastName"  placeholder="Last name" required />
+        <input type="text" name="username"  placeholder="Username" required/>
         <input type="text" name="password" placeholder="Password" required/>
-        <input type="submit" class="btn" value="Add"/>
-    </form>
+        <form:select path="studentGroup" items="${studentGroupList}" itemValue="id" itemLabel="name" />
+        <input type="submit" class="btn" value="Edit"/>
+    </form:form>
 </body>
 </html>

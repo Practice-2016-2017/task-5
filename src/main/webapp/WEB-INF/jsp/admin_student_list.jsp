@@ -17,7 +17,6 @@
 
 </head>
 <body>
-    <c:set var="studentsGroup" scope = "session" value="${studentsGroup}" />
     <div align="center">
         <table class="table table-bordered table-striped">
             <caption><h2>Students list</h2></caption>
@@ -38,7 +37,7 @@
                     <td><c:out value="${student.firstName}" /></td>
                     <td><c:out value="${student.lastName}" /></td>
                     <td><c:out value="${student.email}" /></td>
-                    <td><c:out value="${studentsGroup[status.index]}" /></td>
+                    <td><c:out value="${student.studentGroup.name}" /></td>
                     <td><c:out value="${student.enabled}" /></td>
                     <td><a href="<spring:url value="/admin/studentPage/${student.id}/edit" />">Edit</a> </td>
                     <td>
