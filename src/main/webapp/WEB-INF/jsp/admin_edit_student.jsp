@@ -18,7 +18,7 @@
 
 </head>
 <body>
-    <form:form action="/admin/studentPage/${user.id}/edit" commandName="user" method="POST">
+    <form:form action="/admin/studentPage/${user.id}/edit" modelAttribute="user" method="POST">
         <input type="text" name="firstName" value="${user.firstName}" placeholder="First name" required />
         <input type="text" name="lastName" value="${user.lastName}" placeholder="Last name" required />
         <input type="text" name="username" value="${user.username}" placeholder="Username" required/>

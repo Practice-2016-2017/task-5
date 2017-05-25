@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Collections;
@@ -50,19 +47,10 @@ public class StudentPageController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addStudent(@RequestParam("firstName") String firstName,
-                             @RequestParam("lastName") String lastName,
-                             @RequestParam("username") String username,
-                             @RequestParam("password") String password,
-                             @RequestParam("studentGroup") StudentGroup studentGroup) {
-        if (userRepository.findByUsername(username) == null) {
-            User student = new User();
-            student.setUsername(username);
-            student.setFirstName(firstName);
-            student.setLastName(lastName);
+    public String addStudent(@ModelAttribute User student) {
+        if (userRepository.findByUsername(student.getUsername()) == null) {
             student.setEnabled(true);
-            student.setPassword(passwordEncoder.encode(password));
-            student.setStudentGroup(studentGroup);
+            student.setPassword(passwordEncoder.encode(student.getPassword()));
             student.setRoles(Collections.singletonList(roleRepository.findByName("ROLE_STUDENT")));
             userRepository.save(student);
             return "redirect:/admin/studentPage";

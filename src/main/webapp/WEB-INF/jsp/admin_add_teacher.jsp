@@ -18,12 +18,11 @@
 
 </head>
 <body>
-    <form:form action="/admin/studentPage/add" modelAttribute="user" method="POST">
+    <form:form action="/admin/teacherPage/add" modelAttribute="user" method="POST">
         <input type="text" name="firstName" placeholder="First name" required />
         <input type="text" name="lastName"  placeholder="Last name" required />
         <input type="text" name="username"  placeholder="Username" required/>
         <input type="text" name="password" placeholder="Password" required/>
-        <form:select path="studentGroup" items="${studentGroupList}" itemValue="id" itemLabel="name" />
         <input type="submit" class="btn" value="Add"/>
     </form:form>
 </body>
