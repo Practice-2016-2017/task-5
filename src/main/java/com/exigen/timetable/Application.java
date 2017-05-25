@@ -1,13 +1,7 @@
 package com.exigen.timetable;
 
-import com.exigen.timetable.pojo.Role;
-import com.exigen.timetable.pojo.StudentClass;
-import com.exigen.timetable.pojo.StudentGroup;
-import com.exigen.timetable.pojo.User;
-import com.exigen.timetable.repository.RoleRepository;
-import com.exigen.timetable.repository.StudentClassRepository;
-import com.exigen.timetable.repository.StudentGroupRepository;
-import com.exigen.timetable.repository.UserRepository;
+import com.exigen.timetable.pojo.*;
+import com.exigen.timetable.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -36,6 +30,9 @@ public class Application extends SpringBootServletInitializer implements Applica
 	private StudentClassRepository studentClassRepository;
 
 	@Autowired
+	private StudentClassTimeRepository studentClassTimeRepository;
+
+	@Autowired
 	private PasswordEncoder passwordEncoder;
 
 	@Override
@@ -62,10 +59,6 @@ public class Application extends SpringBootServletInitializer implements Applica
 		createStudentGroupIfNotExist("322");
 		createStudentGroupIfNotExist("323");
 		createStudentGroupIfNotExist("324");
-
-		createStudentClassIfNotExist(StudentClass.DayOfWeek.MON);
-		createStudentClassIfNotExist(StudentClass.DayOfWeek.THU);
-		createStudentClassIfNotExist(StudentClass.DayOfWeek.FRI);
 	}
 
 	private void createRoleIfNotExist(String name) {
@@ -81,7 +74,6 @@ public class Application extends SpringBootServletInitializer implements Applica
 			User user = new User(
 					name,
 					name,
-					name + "@" + name + ".ru",
 					name,
 					passwordEncoder.encode(name)
 			);
@@ -98,15 +90,5 @@ public class Application extends SpringBootServletInitializer implements Applica
 					userRepository.findByUsername("studentTest")));
 			studentGroupRepository.save(studentGroup);
 		}
-	}
-
-	private void createStudentClassIfNotExist(StudentClass.DayOfWeek dayOfWeek) {
-		StudentClass studentClass = new StudentClass(
-				dayOfWeek,
-				new Time(36000000),
-				new Time(39600000),
-				userRepository.findByUsername("teacherTest"),
-				studentGroupRepository.findByName("321"));
-		studentClassRepository.save(studentClass);
 	}
 }

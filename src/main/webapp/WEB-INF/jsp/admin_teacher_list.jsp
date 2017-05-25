@@ -25,7 +25,6 @@
                 <th>Username</th>
                 <th>First name</th>
                 <th>Last name</th>
-                <th>Email</th>
                 <th>Enabled</th>
                 <th colspan=2>Action</th>
             </tr>
@@ -35,7 +34,6 @@
                     <td><c:out value="${teacher.username}" /></td>
                     <td><c:out value="${teacher.firstName}" /></td>
                     <td><c:out value="${teacher.lastName}" /></td>
-                    <td><c:out value="${teacher.email}" /></td>
                     <td><c:out value="${teacher.enabled}" /></td>
                     <td><a href="<spring:url value="/admin/teacherPage/${teacher.id}/edit" />">Edit</a> </td>
                     <td>

@@ -1,29 +1,18 @@
 package com.exigen.timetable.pojo;
 
 import javax.persistence.*;
-import java.sql.Time;
 
 @Entity
 public class StudentClass {
-    public enum DayOfWeek {
-        MON,
-        TUE,
-        WED,
-        THU,
-        FRI,
-        SAT,
-        SUN
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
+    @ManyToOne
     private DayOfWeek dayOfWeek;
 
-    private Time timeStart;
-    private Time timeEnd;
+    @ManyToOne
+    private StudentClassTime studentClassTime;
 
     @ManyToOne
     private User teacher;
@@ -35,10 +24,12 @@ public class StudentClass {
 
     }
 
-    public StudentClass(DayOfWeek dayOfWeek, Time timeStart, Time timeEnd, User teacher, StudentGroup studentGroup) {
+    public StudentClass(DayOfWeek dayOfWeek,
+                        StudentClassTime studentClassTime,
+                        User teacher,
+                        StudentGroup studentGroup) {
         this.dayOfWeek = dayOfWeek;
-        this.timeStart = timeStart;
-        this.timeEnd = timeEnd;
+        this.studentClassTime = studentClassTime;
         this.teacher = teacher;
         this.studentGroup = studentGroup;
     }
@@ -59,20 +50,12 @@ public class StudentClass {
         this.dayOfWeek = dayOfWeek;
     }
 
-    public Time getTimeStart() {
-        return timeStart;
+    public StudentClassTime getStudentClassTime() {
+        return studentClassTime;
     }
 
-    public void setTimeStart(Time timeStart) {
-        this.timeStart = timeStart;
-    }
-
-    public Time getTimeEnd() {
-        return timeEnd;
-    }
-
-    public void setTimeEnd(Time timeEnd) {
-        this.timeEnd = timeEnd;
+    public void setStudentClassTime(StudentClassTime studentClassTime) {
+        this.studentClassTime = studentClassTime;
     }
 
     public User getTeacher() {

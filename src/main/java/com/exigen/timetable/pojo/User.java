@@ -12,7 +12,6 @@ public class User {
 
     private String firstName;
     private String lastName;
-    private String email;
     private String username;
     private String password;
     private boolean enabled;
@@ -36,10 +35,9 @@ public class User {
 
     }
 
-    public User(String firstName, String lastName, String email, String username, String password) {
+    public User(String firstName, String lastName, String username, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
         this.username = username;
         this.password = password;
     }
@@ -66,14 +64,6 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getUsername() {
