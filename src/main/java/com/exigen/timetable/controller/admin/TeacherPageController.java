@@ -16,7 +16,7 @@ import java.util.Collections;
 
 @Controller
 @RequestMapping("/admin/teacherPage")
-public class TeacherController {
+public class TeacherPageController {
 
     @Autowired
     private UserRepository userRepository;

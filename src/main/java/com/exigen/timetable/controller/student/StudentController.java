@@ -37,7 +37,6 @@ public class StudentController {
 
     @RequestMapping("/timetable")
     public ModelAndView timetable(Authentication authentication) {
-        ModelMap model = new ModelMap();
 
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         StudentGroup studentGroup = userRepository.findByUsername(userDetails.getUsername())
@@ -55,20 +54,6 @@ public class StudentController {
             return dayOfWeek1.compareTo(dayOfWeek2);
         });
 
-        /*int studentClassesPos = 0;
-        List<List<StudentClass>> allStudentClasses = new ArrayList<>();
-        List<DayOfWeek> dayOfWeekList = dayOfWeekRepository.findAll();
-        for (int i = 0; i < studentClassTimeRepository.count(); ++i) {
-            List<StudentClass> weekStudentClasses = new ArrayList<>();
-            for (int j = 0; j < dayOfWeekList.size(); ++j) {
-                if (studentClasses.get(studentClassesPos).getStudentClassTime().getId() == i &&
-                        studentClasses.get(studentClassesPos).getDayOfWeek().getId() == j) {
-                    weekStudentClasses.
-                }
-            }
-        }*/
-
-        model.addAttribute("studentClasses", studentClasses);
-        return new ModelAndView("student_timetable", model);
+        return new ModelAndView("student_timetable", "studentClasses", studentClasses);
     }
 }

@@ -19,22 +19,24 @@
 <body>
     <div align="center">
         <table class="table table-bordered table-striped">
-            <caption><h2>Student timetable</h2></caption>
+            <caption><h2>Teacher timetable</h2></caption>
             <tr>
                 <th>Day of week</th>
                 <th>TimeStart</th>
                 <th>TimeEnd</th>
-                <th>Teacher name</th>
+                <th>Student group</th>
             </tr>
             <c:forEach var="studentClass" items="${studentClasses}">
                 <tr>
                     <td><c:out value="${studentClass.dayOfWeek.name}" /></td>
                     <td><c:out value="${studentClass.studentClassTime.timeStart}" /></td>
                     <td><c:out value="${studentClass.studentClassTime.timeEnd}" /></td>
-                    <td><c:out value="${studentClass.teacher.lastName}" /></td>
+                    <td><c:out value="${studentClass.studentGroup.name}" /></td>
                 </tr>
             </c:forEach>
         </table>
+
+        <a class="btn btn-primary" href="<spring:url value="/teacher/timetable/add" />">Add Class</a>
     </div>
 </body>
 </html>
