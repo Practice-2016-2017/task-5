@@ -35,17 +35,17 @@
                     <td><c:out value="${teacher.firstName}" /></td>
                     <td><c:out value="${teacher.lastName}" /></td>
                     <td><c:out value="${teacher.enabled}" /></td>
-                    <td><a href="<spring:url value="/admin/teacherPage/${teacher.id}/edit" />">Edit</a> </td>
+                    <td><a class="btn btn-info" href="<spring:url value="/admin/teacherPage/${teacher.id}/edit" />">Edit</a> </td>
                     <td>
                         <form action="<spring:url value="/admin/teacherPage/${teacher.id}/delete" />" method="POST">
-                            <input type="submit" class="btn" value="Delete"/>
+                            <button type="submit" class="btn btn-danger">Del</button>
                         </form>
                     </td>
                 </tr>
             </c:forEach>
         </table>
 
-        <a href="<spring:url value="/admin/teacherPage/add" />">Add teacher</a>
+        <a class="btn btn-primary" href="<spring:url value="/admin/teacherPage/add" />">Add teacher</a>
     </div>
 </body>
 </html>

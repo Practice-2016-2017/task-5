@@ -38,7 +38,7 @@
                  items="${studentGroupList}" itemValue="id" itemLabel="name" /> </td>
             </tr>
         </table>
-        <input type="submit" class="btn" value="Add"/>
+        <input type="submit" class="btn btn-primary" value="Add"/>
     </form:form>
 </body>
 </html>

@@ -18,7 +18,7 @@
 </head>
 <body>
     <div align="center">
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered table-striped table-hovered">
             <caption><h2>Students list</h2></caption>
             <tr>
                 <th>Id</th>
@@ -37,17 +37,17 @@
                     <td><c:out value="${student.lastName}" /></td>
                     <td><c:out value="${student.studentGroup.name}" /></td>
                     <td><c:out value="${student.enabled}" /></td>
-                    <td><a href="<spring:url value="/admin/studentPage/${student.id}/edit" />">Edit</a> </td>
+                    <td><a class="btn btn-info" href="<spring:url value="/admin/studentPage/${student.id}/edit" />">Edit</a> </td>
                     <td>
                         <form action="<spring:url value="/admin/studentPage/${student.id}/delete" />" method="POST">
-                            <input type="submit" class="btn" value="Delete"/>
+                            <button type="submit" class="btn btn-danger">Del</button>
                         </form>
                     </td>
                 </tr>
             </c:forEach>
         </table>
 
-        <a href="<spring:url value="/admin/studentPage/add" />">Add student</a>
+        <a class="btn btn-primary" href="<spring:url value="/admin/studentPage/add" />">Add student</a>
     </div>
 </body>
 </html>
