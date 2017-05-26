@@ -23,5 +23,9 @@
     </ul>
 </div>
 </div>
+
+    <div class="right">
+        <a href="<c:url value="/logout" />">Logout</a>
+    </div>
 </body>
 </html>

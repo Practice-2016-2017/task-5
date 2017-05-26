@@ -18,12 +18,27 @@
 
 </head>
 <body>
+
     <form:form action="/admin/teacherPage/add" modelAttribute="user" method="POST">
-        <input type="text" name="firstName" placeholder="First name" required />
-        <input type="text" name="lastName"  placeholder="Last name" required />
-        <input type="text" name="username"  placeholder="Username" required/>
-        <input type="text" name="password" placeholder="Password" required/>
-        <input type="submit" class="btn" value="Add"/>
+        <div class="form-group">
+            <label for="firstName">First name</label>
+            <input type="text" class="form-control" name="firstName" placeholder="First name" required />
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last name</label>
+            <input type="text" class="form-control" name="lastName" placeholder="Last name" required />
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username"  placeholder="Username" required/>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Password" required/>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Add"/>
     </form:form>
+
+    <a href="<c:url value="/logout" />">Logout</a>
 </body>
 </html>

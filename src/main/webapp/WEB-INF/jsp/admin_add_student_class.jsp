@@ -16,29 +16,30 @@
 </head>
 <body>
     <form:form action="/admin/studentClassPage/add" modelAttribute="studentClass" method="POST">
-        <table>
-            <tr>
-                <td><form:label path="dayOfWeek">Day of week</form:label></td>
-                <td><form:select path="dayOfWeek"
-                    items="${dayOfWeekList}" itemValue="id" itemLabel="name"/></td>
-            </tr>
-            <tr>
-                <td><form:label path="studentClassTime">Class number</form:label></td>
-                <td><form:select path="studentClassTime"
-                    items="${studentClassTimeList}" itemValue="id" itemLabel="id" /> </td>
-            </tr>
-            <tr>
-                <td><form:label path="teacher">Teacher name</form:label></td>
-                <td><form:select path="teacher"
-                    items="${teacherList}" itemValue="id" itemLabel="lastName" /> </td>
-            </tr>
-            <tr>
-                <td><form:label path="studentGroup">Student group</form:label></td>
-                <td><form:select path="studentGroup"
-                 items="${studentGroupList}" itemValue="id" itemLabel="name" /> </td>
-            </tr>
-        </table>
+        <div class="form-group">
+            <form:label path="dayOfWeek">Day of week</form:label>
+            <form:select path="dayOfWeek"
+                items="${dayOfWeekList}" class="form-control" itemValue="id" itemLabel="name"/>
+        </div>
+        <div class="form-group">
+            <form:label path="studentClassTime">Class number</form:label>
+            <form:select path="studentClassTime" class="form-control"
+                items="${studentClassTimeList}" itemValue="id" itemLabel="id" />
+        </div>
+        <div class="form-group">
+            <form:label path="teacher">Teacher name</form:label>
+            <form:select path="teacher" class="form-control"
+                items="${teacherList}" itemValue="id" itemLabel="lastName" />
+        </div>
+        <div class="form-group">
+            <form:label path="studentGroup">Student group</form:label>
+            <form:select path="studentGroup" class="form-control"
+             items="${studentGroupList}" itemValue="id" itemLabel="name" />
+        </div>
+
         <input type="submit" class="btn btn-primary" value="Add"/>
     </form:form>
+
+    <a href="<c:url value="/logout" />">Logout</a>
 </body>
 </html>

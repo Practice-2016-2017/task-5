@@ -37,17 +37,19 @@
                     <td><c:out value="${studentClass.studentClassTime.timeEnd}" /></td>
                     <td><c:out value="${studentClass.teacher.lastName}" /></td>
                     <td><c:out value="${studentClass.studentGroup.name}" /></td>
-                    <td><a href="<spring:url value="/admin/studentClassPage/${studentClass.id}/edit" />">Edit</a> </td>
+                    <td><a class="btn btn-info" href="<spring:url value="/admin/studentClassPage/${studentClass.id}/edit" />">Edit</a> </td>
                     <td>
                         <form action="<spring:url value="/admin/studentClassPage/${studentClass.id}/delete" />" method="POST">
-                            <input type="submit" class="btn" value="Delete"/>
+                            <input type="submit" class="btn btn-danger" value="Delete"/>
                         </form>
                     </td>
                 </tr>
             </c:forEach>
         </table>
 
-        <a href="<spring:url value="/admin/studentClassPage/add" />">Add student class</a>
+        <a class="btn btn-primary" href="<spring:url value="/admin/studentClassPage/add" />">Add student class</a>
     </div>
+
+    <a href="<c:url value="/logout" />">Logout</a>
 </body>
 </html>

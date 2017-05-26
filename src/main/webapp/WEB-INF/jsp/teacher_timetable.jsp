@@ -38,5 +38,8 @@
 
         <a class="btn btn-primary" href="<spring:url value="/teacher/timetable/add" />">Add Class</a>
     </div>
+
+
+    <a href="<c:url value="/logout" />">Logout</a>
 </body>
 </html>

@@ -19,10 +19,24 @@
 </head>
 <body>
     <form:form action="/admin/teacherPage/${user.id}/edit" modelAttribute="user" method="POST">
-        <input type="text" name="firstName" value="${user.firstName}" placeholder="First name" required />
-        <input type="text" name="lastName" value="${user.lastName}" placeholder="Last name" required />
-        <input type="text" name="username" value="${user.username}" placeholder="Username" required/>
-        <input type="submit" class="btn" value="Edit"/>
+        <div class="form-group">
+            <label for="firstName">First name</label>
+            <input type="text" class="form-control" name="firstName" value="${user.firstName}"
+             placeholder="First name" required />
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last name</label>
+            <input type="text" class="form-control" name="lastName" value="${user.lastName}"
+             placeholder="Last name" required />
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" value="${user.username}"
+              placeholder="Username" required/>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Edit"/>
     </form:form>
+
+    <a href="<c:url value="/logout" />">Logout</a>
 </body>
 </html>

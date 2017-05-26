@@ -49,5 +49,7 @@
 
         <a class="btn btn-primary" href="<spring:url value="/admin/studentPage/add" />">Add student</a>
     </div>
+
+    <a href="<c:url value="/logout" />">Logout</a>
 </body>
 </html>
