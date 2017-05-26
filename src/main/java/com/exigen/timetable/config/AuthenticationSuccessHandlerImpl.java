@@ -51,9 +51,9 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
                 case "ROLE_ADMIN":
                     return "/admin";
                 case "ROLE_STUDENT":
-                    return "/student";
+                    return "/student/timetable";
                 case "ROLE_TEACHER":
-                    return "/teacher";
+                    return "/teacher/timetable";
                 default:
                     return "/error";
             }

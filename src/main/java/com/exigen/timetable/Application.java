@@ -51,9 +51,9 @@ public class Application extends SpringBootServletInitializer implements Applica
 		createRoleIfNotExist("ROLE_STUDENT");
 		createRoleIfNotExist("ROLE_TEACHER");
 
-		createTestUserIfNotExist("adminTest", "ROLE_ADMIN");
-		createTestUserIfNotExist("studentTest", "ROLE_STUDENT");
-		createTestUserIfNotExist("teacherTest", "ROLE_TEACHER");
+		createTestUserIfNotExist("admin", "ROLE_ADMIN");
+		createTestUserIfNotExist("student", "ROLE_STUDENT");
+		createTestUserIfNotExist("teacher", "ROLE_TEACHER");
 
 		createStudentGroupIfNotExist("321");
 		createStudentGroupIfNotExist("322");

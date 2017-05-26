@@ -21,19 +21,19 @@
         <table class="table table-bordered table-striped">
             <caption><h2>Student timetable</h2></caption>
             <tr>
-                <th>Id</th>
+                <th>Day of week</th>
                 <th>TimeStart</th>
                 <th>TimeEnd</th>
-                <th>DayOfWeek</th>
-                <th>Teacher name</>
+                <th>Teacher name</th>
+                <th>Student group</th>
             </tr>
             <c:forEach var="studentClass" items="${studentClasses}">
                 <tr>
-                    <td><c:out value="${studentClass.id}" /></td>
-                    <td><c:out value="${studentClass.timeStart}" /></td>
-                    <td><c:out value="${studentClass.timeEnd}" /></td>
-                    <td><c:out value="${studentClass.dayOfWeek}" /></td>
-                    <td><c:out value="${studentClass.teacher.username}" /></td>
+                    <td><c:out value="${studentClass.dayOfWeek.name}" /></td>
+                    <td><c:out value="${studentClass.studentClassTime.timeStart}" /></td>
+                    <td><c:out value="${studentClass.studentClassTime.timeEnd}" /></td>
+                    <td><c:out value="${studentClass.teacher.lastName}" /></td>
+                    <td><c:out value="${studentClass.studentGroup.name}" /></td>
                 </tr>
             </c:forEach>
         </table>
